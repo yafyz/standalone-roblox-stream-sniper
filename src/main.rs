@@ -24,7 +24,7 @@ fn get_auth_ticket(cookie: &str) -> String {
         .set("Content-Length", "0")
         .call();
     if resp.ok() {
-        resp.header("RBX-Authentication-Ticket").unwrap().to_owned() // maybe should have put here a match case, this code is so inconsistent
+        resp.header("RBX-Authentication-Ticket").unwrap().to_owned() // return that
     } else {
         println!("{}",&resp.into_string().unwrap()); // ey something fucked up if we are here
         unimplemented!()
