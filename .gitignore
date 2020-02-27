@@ -1,0 +1,8 @@
+/target
+**/*.rs.bk
+/build
+run.cmd
+/.vscode
+somerustthing.code-workspace
+cookie
+Cargo.lock
