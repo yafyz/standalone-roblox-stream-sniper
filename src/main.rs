@@ -140,7 +140,7 @@ fn main() -> io::Result<()> {
     let mut cookie: String = String::new();
     let mut cookie_file: fs::File = fs::File::open("cookie")?;
     cookie_file.read_to_string(&mut cookie)?;
-    let mut game_id: String = String::new();// = "606849621";
+    let mut game_id: String = String::new();
     let mut person: String = String::new();
     print!("Place id: ");
     io::stdout().flush()?;

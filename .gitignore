@@ -6,3 +6,4 @@ run.cmd
 somerustthing.code-workspace
 cookie
 Cargo.lock
+/stream_sniper
