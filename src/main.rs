@@ -3,7 +3,7 @@ use std::process;
 use std::io;
 use std::io::Write;
 use std::fs;
-use std::io::prelude::*;
+use std::io::prelude::Read;
 extern crate ureq;
 extern crate dirs;
 extern crate serde_json;
@@ -152,8 +152,9 @@ fn main() -> io::Result<()> {
     person = person.split_whitespace().next().unwrap().to_owned();
     let server_job_id: Option<String> = find_player(&cookie, &game_id, &person);
     match server_job_id {
-        None => println!("{}", "sad gamer moment"),
+        None => println!("{}", "User not found"),
         Some(x) => launch_game_instance(&cookie, &game_id, Some(&x))
     }
+    io::stdin().read_line(&mut "".to_owned())?;
     Ok(())
 }
