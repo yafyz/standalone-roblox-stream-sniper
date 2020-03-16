@@ -97,15 +97,15 @@ fn find_player(cookie: &str,placeid:  &str, username: &str) -> Option<String> {
             if image_json["data"][0]["state"] == "Completed" { // check if the request suceeded
                 let image_url: &str = &image_json["data"][0]["imageUrl"].to_string().to_owned(); // extract the image url
                 let mut start_index: u32 = 0; // page index
-                let mut total_size: u32; // total servers
+                let mut total_size: u32 = 0; // total servers
                 loop {
                     let game_instances_resp: ureq::SerdeValue = ureq::get(&format!("{}{}{}{}","https://www.roblox.com/games/getgameinstancesjson?placeId=",&placeid,"&startIndex=",start_index))
                         .set("Cookie", &format!("{}{}", ".ROBLOSECURITY=", cookie)) // get game instances
                         .call()
                         .into_json() // response into json
                         .unwrap();
+					println!("{}/{}", start_index, total_size);
                     total_size = game_instances_resp["TotalCollectionSize"].to_string().parse::<u32>().unwrap(); // get total ammount of servers
-                    println!("{}/{}", start_index, total_size);
                     let servers: String = game_instances_resp["Collection"].to_string(); // make a string out of that
                     let serde_server_value: serde_json::Deserializer<serde_json::de::StrRead<'_>> = serde_json::Deserializer::from_str(&servers); // create a Deserializer
                     for value in serde_server_value.into_iter::<Vec<serde_json::Value>>().next().unwrap().unwrap() { // some jank iterator i made which i dont even know how works
