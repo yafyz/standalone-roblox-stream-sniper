@@ -108,7 +108,7 @@ fn find_player(cookie: &str,placeid:  &str, username: &str) -> Option<String> {
                     total_size = game_instances_resp["TotalCollectionSize"].to_string().parse::<u32>().unwrap(); // get total ammount of servers
                     let servers: String = game_instances_resp["Collection"].to_string(); // make a string out of that
                     let serde_server_value: serde_json::Deserializer<serde_json::de::StrRead<'_>> = serde_json::Deserializer::from_str(&servers); // create a Deserializer
-                    for value in serde_server_value.into_iter::<Vec<serde_json::Value>>().next().unwrap().unwrap() { // some jank iterator i made which i dont even know how works
+                    for value in serde_server_value.into_iter::<Vec<serde_json::Value>>().next().unwrap().unwrap() {
                         let stringed: String = value.to_string(); // to string dat
                         println!("{}", value["Guid"]);
                         if stringed.find(&image_url) != None { // check if the url is in the string
