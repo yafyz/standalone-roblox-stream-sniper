@@ -1,4 +1,7 @@
 # standalone-roblox-stream-sniper
+
+probably does not work and cant be bothered to update it
+
 it's a stream sniper, does the same thing like all the others, join someone's game
 but this one is launching roblox directly, that's it, nothing else
 i just thought it would be cool to make something like this
